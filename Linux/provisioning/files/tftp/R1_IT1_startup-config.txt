@@ -1,0 +1,101 @@
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname R1
+!
+!
+!
+enable secret 5 $1$mERr$GbpJzpzIDj5Z9M0guq9qN1
+!
+!
+!
+!
+!
+!
+ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524OSRP-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ ip address 192.168.101.253 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1.1
+ encapsulation dot1Q 1 native
+ ip address 192.168.101.238 255.255.255.248
+!
+interface GigabitEthernet0/0/1.11
+ encapsulation dot1Q 11
+ ip address 192.168.101.126 255.255.255.128
+!
+interface GigabitEthernet0/0/1.13
+ encapsulation dot1Q 13
+ ip address 192.168.101.230 255.255.255.248
+!
+interface GigabitEthernet0/0/1.42
+ encapsulation dot1Q 42
+ ip address 192.168.101.206 255.255.255.240
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 192.168.101.254 
+!
+ip flow-export version 9
+!
+!
+!
+banner motd $Toegang enkel voor bevoegden!!!$
+!
+!
+!
+!
+line con 0
+ password 7 083343411D
+ login
+!
+line aux 0
+!
+line vty 0 4
+ password 7 083343411D
+ login
+!
+!
+!
+end
+
